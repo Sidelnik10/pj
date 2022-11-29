@@ -1,0 +1,36 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.0.0'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework:spring-web:6.0.2'
+	implementation 'org.springframework.data:spring-data-commons:3.0.0'
+	implementation 'org.postgresql:postgresql:42.5.1'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.0.0'
+	implementation 'org.springframework.data:spring-data-jpa:3.0.0'
+	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
+	testImplementation group: 'junit', name: 'junit', version: '4.13.2'
+	testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.9.1'
+	testImplementation group: 'org.springframework', name: 'spring-test', version: '6.0.2'
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
